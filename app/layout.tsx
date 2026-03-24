@@ -1,34 +1,29 @@
 import type { Metadata, Viewport } from 'next'
-import { Inter, Space_Grotesk, Space_Mono } from 'next/font/google'
+import { Inter, Playfair_Display } from 'next/font/google'
 import { Analytics } from '@vercel/analytics/next'
 import './globals.css'
 
-const inter = Inter({ subsets: ['latin', 'latin-ext'] })
-const spaceGrotesk = Space_Grotesk({ subsets: ['latin'], weight: ['400', '500', '600', '700'] })
-const spaceMono = Space_Mono({ weight: ['400', '700'], subsets: ['latin'] })
+const inter = Inter({ 
+  subsets: ['latin'],
+  variable: '--font-sans',
+})
+
+const playfair = Playfair_Display({ 
+  subsets: ['latin'],
+  variable: '--font-serif',
+})
 
 export const metadata: Metadata = {
-  title: 'Curious Media | Connecting Creators with Brands',
-  description: 'The ultimate platform for connecting talented creators with innovative brands. Build authentic partnerships, grow your audience, and unlock new opportunities.',
-  keywords: 'creators, brands, influencer marketing, content creation, collaboration, partnership',
-  openGraph: {
-    title: 'Curious Media | Connecting Creators with Brands',
-    description: 'The ultimate platform for connecting talented creators with innovative brands.',
-    type: 'website',
-  },
-  twitter: {
-    card: 'summary_large_image',
-    title: 'Curious Media',
-    description: 'Connecting Creators with Brands',
-  },
+  title: 'CURIOUS | Premium Content Agency',
+  description: 'We build digital products, experiences, and futures. A world-class agency for creators and brands.',
+  keywords: 'agency, design, development, creators, motion design, premium branding',
 }
 
 export const viewport: Viewport = {
   width: 'device-width',
   initialScale: 1,
-  maximumScale: 5,
-  themeColor: '#0052FF',
-  userScalable: true,
+  maximumScale: 1,
+  themeColor: '#0a0a0a',
 }
 
 export default function RootLayout({
@@ -37,8 +32,8 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={`${spaceGrotesk.className} bg-background text-foreground antialiased`}>
+    <html lang="en" suppressHydrationWarning className={`${inter.variable} ${playfair.variable}`}>
+      <body className="bg-background text-foreground antialiased selection:bg-accent selection:text-background">
         {children}
         <Analytics />
       </body>
